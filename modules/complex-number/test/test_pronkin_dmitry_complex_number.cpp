@@ -30,8 +30,8 @@ TEST_P(Pronkin_Dmitry_ComplexNumberTest_Parametrized_2, Multiplication_Complex_C
 
 INSTANTIATE_TEST_CASE_P(/**/, Pronkin_Dmitry_ComplexNumberTest_Parametrized_2,
     testing::Combine(
-  testing::Values(5.0, 3.0, 5.0, 3.0),
-  testing::Values(1.0, 7.0, 4.0, 8.0)
+  testing::Values(-5.0, 3.0, 2.0, -3.0),
+  testing::Values(1.3, 7.5, 4.8, 8.0)
 ));
 
 typedef testing::TestWithParam<std::tuple<double, double, double, double>>
