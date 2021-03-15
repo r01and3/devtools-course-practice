@@ -3,15 +3,16 @@
 #include <gtest/gtest.h>
 
 #include <tuple>
+#include <memory>
 #include "include/complex_number.h"
 
 TEST(Pronkin_Dmitry_ComplexNumberTest, Can_Create_Pointer) {
     double re = 13.0;
     double im = 13.0;
-    ComplexNumber* z = new ComplexNumber(re, im);
+    std::unique_ptr<ComplexNumber> z(new ComplexNumber(re, im));
 
-    ASSERT_EQ(z->getRe(), re);
-    ASSERT_EQ(z->getIm(), im);
+    ASSERT_EQ(re, z->getRe());
+    ASSERT_EQ(im, z->getIm());
 }
 
 typedef testing::TestWithParam<std::tuple<double, double>>
@@ -24,9 +25,9 @@ TEST_P(Pronkin_Dmitry_ComplexNumberTest_Parametrized_2,
     ComplexNumber z2(re, -im);
 
     ComplexNumber z = z1 * z2;
-    ComplexNumber result(re * re + im * im, 0.0);
+    ComplexNumber control(re * re + im * im, 0.0);
 
-    ASSERT_EQ(z, result);
+    ASSERT_EQ(control, z);
 }
 
 INSTANTIATE_TEST_CASE_P(/**/, Pronkin_Dmitry_ComplexNumberTest_Parametrized_2,
@@ -49,8 +50,8 @@ TEST_P(Pronkin_Dmitry_ComplexNumberTest_Parametrized_4,
     ComplexNumber z = z1 / z2;
     ComplexNumber result = z * z2;
 
-    ASSERT_DOUBLE_EQ(result.getRe(), z1.getRe());
-    ASSERT_DOUBLE_EQ(result.getIm(), z1.getIm());
+    ASSERT_DOUBLE_EQ(re1, result.getRe());
+    ASSERT_DOUBLE_EQ(im1, result.getIm());
 }
 
 INSTANTIATE_TEST_CASE_P(/**/, Pronkin_Dmitry_ComplexNumberTest_Parametrized_4,
