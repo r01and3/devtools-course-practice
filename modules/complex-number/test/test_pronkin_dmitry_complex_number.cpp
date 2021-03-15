@@ -16,7 +16,8 @@ TEST(Pronkin_Dmitry_ComplexNumberTest, Can_Create_Pointer) {
 
 typedef testing::TestWithParam<std::tuple<double, double>>
         Pronkin_Dmitry_ComplexNumberTest_Parametrized_2;
-TEST_P(Pronkin_Dmitry_ComplexNumberTest_Parametrized_2, Multiplication_Complex_Conjugate) {
+TEST_P(Pronkin_Dmitry_ComplexNumberTest_Parametrized_2,
+       Multiplication_Complex_Conjugate) {
     double re = std::get<0>(GetParam());
     double im = std::get<1>(GetParam());
     ComplexNumber z1(re, im);
@@ -36,7 +37,8 @@ INSTANTIATE_TEST_CASE_P(/**/, Pronkin_Dmitry_ComplexNumberTest_Parametrized_2,
 
 typedef testing::TestWithParam<std::tuple<double, double, double, double>>
         Pronkin_Dmitry_ComplexNumberTest_Parametrized_4;
-TEST_P(Pronkin_Dmitry_ComplexNumberTest_Parametrized_4, Multiplication_After_Division_Give_Original) {
+TEST_P(Pronkin_Dmitry_ComplexNumberTest_Parametrized_4,
+       Multiplication_After_Division_Give_Original) {
     double re1 = std::get<0>(GetParam());
     double im1 = std::get<1>(GetParam());
     double re2 = std::get<2>(GetParam());
