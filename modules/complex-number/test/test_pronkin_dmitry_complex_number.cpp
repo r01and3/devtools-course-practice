@@ -27,7 +27,7 @@ TEST_P(Pronkin_Dmitry_ComplexNumberTest_Parametrized_4,
     ComplexNumber z2(re2, im2);
     ComplexNumber z3(re1, -im1);
     ComplexNumber z4(re2, -im2);
-    
+
     ComplexNumber control = z1 / z2;
     ComplexNumber result = z3 / z4;
 
