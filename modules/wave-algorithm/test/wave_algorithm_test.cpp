@@ -1,6 +1,7 @@
 // Copyright 2021 Pronkin Dmitry
 
 #include <gtest/gtest.h>
+#include <vector>
 
 #include "include/wave_algorithm.h"
 
