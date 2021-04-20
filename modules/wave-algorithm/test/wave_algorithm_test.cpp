@@ -21,7 +21,8 @@ TEST(WaveAlgorithm, MapCreateTest) {
 }
 
 TEST(WaveAlgorithm, MapCopyTest) {
-    ASSERT_NO_THROW(WaveAlgorithm::Map(WaveAlgorithm::Map(std::vector<int>(4), 2, 2)));
+    ASSERT_NO_THROW(
+        WaveAlgorithm::Map(WaveAlgorithm::Map(std::vector<int>(4), 2, 2)));
 }
 
 TEST(WaveAlgorithm, IndexingOperatorException) {
@@ -51,7 +52,8 @@ TEST(WaveAlgorithm, DISABLED_OutOfRangeException) {
     WaveAlgorithm::point finish(-1, 1);
     WaveAlgorithm::Map m(map, 2, 2);
     std::vector<WaveAlgorithm::point> path;
-    ASSERT_ANY_THROW(WaveAlgorithm::Algorithm::findPath(m, path, start, finish));
+    ASSERT_ANY_THROW(
+        WaveAlgorithm::Algorithm::findPath(m, path, start, finish));
 }
 
 TEST(WaveAlgorithm, DISABLED_NotFreePointException) {
@@ -63,7 +65,8 @@ TEST(WaveAlgorithm, DISABLED_NotFreePointException) {
     WaveAlgorithm::point finish(1, 1);
     WaveAlgorithm::Map m(map, 2, 2);
     std::vector<WaveAlgorithm::point> path;
-    ASSERT_ANY_THROW(WaveAlgorithm::Algorithm::findPath(m, path, start, finish));
+    ASSERT_ANY_THROW(
+        WaveAlgorithm::Algorithm::findPath(m, path, start, finish));
 }
 
 TEST(WaveAlgorithm, AlgorithmTest) {
