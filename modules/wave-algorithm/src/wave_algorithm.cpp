@@ -54,6 +54,7 @@ bool WaveLib::WaveAlgorithm::findPath(
     map[start.second * mapWidth + start.first] = 0;
     if (!waveProp(start, finish)) { return false; }
     buildPath(start, finish, path);
+    map = tmpMap;
     std::reverse(path->begin(), path->end());
     return true;
 }
