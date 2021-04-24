@@ -68,7 +68,7 @@ bool WaveLib::WaveAlgorithm::waveProp(const point& start, const point& finish) {
                 point wavePoint(currPoint.first + i, currPoint.second + j);
                 if (currPoint != wavePoint &&
                     checkPoint(wavePoint) &&
-                    map[wavePoint.second * mapWidth + wavePoint.first] 
+                    map[wavePoint.second * mapWidth + wavePoint.first]
                     == FREE) {
                     map[wavePoint.second * mapWidth + wavePoint.first] =
                     map[currPoint.second * mapWidth + currPoint.first] + 1;
@@ -88,7 +88,7 @@ void WaveLib::WaveAlgorithm::buildPath(
     ) {
     point currPoint(finish);
     path->push_back(currPoint);
-    while(currPoint != start) {
+    while (currPoint != start) {
         for (int j = -1; j <= 1; j++) {
             for (int i = -1; i <= 1; i++) {
                 point pathPoint(currPoint.first + i, currPoint.second + j);
