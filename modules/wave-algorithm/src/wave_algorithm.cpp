@@ -60,15 +60,16 @@ bool WaveLib::WaveAlgorithm::findPath(
 bool WaveLib::WaveAlgorithm::waveProp(const point& start, const point& finish) {
     std::queue<point> wavePointQueue({start});
     bool pathFound = false;
-    while(!wavePointQueue.empty()) {
+    while (!wavePointQueue.empty()) {
         point currPoint = wavePointQueue.front();
         if (currPoint == finish) { pathFound = true; }
         for (int j = -1; j <= 1; j++) {
             for (int i = -1; i <= 1; i++) {
                 point wavePoint(currPoint.first + i, currPoint.second + j);
-                if (currPoint != wavePoint && 
-                    checkPoint(wavePoint) && 
-                    map[wavePoint.second * mapWidth + wavePoint.first] == FREE) {
+                if (currPoint != wavePoint &&
+                    checkPoint(wavePoint) &&
+                    map[wavePoint.second * mapWidth + wavePoint.first] 
+                    == FREE) {
                     map[wavePoint.second * mapWidth + wavePoint.first] =
                     map[currPoint.second * mapWidth + currPoint.first] + 1;
                     wavePointQueue.push(wavePoint);
@@ -91,9 +92,9 @@ void WaveLib::WaveAlgorithm::buildPath(
         for (int j = -1; j <= 1; j++) {
             for (int i = -1; i <= 1; i++) {
                 point pathPoint(currPoint.first + i, currPoint.second + j);
-                if (currPoint != pathPoint && 
+                if (currPoint != pathPoint &&
                     checkPoint(pathPoint) &&
-                    map[pathPoint.second * mapWidth + pathPoint.first] + 1 == 
+                    map[pathPoint.second * mapWidth + pathPoint.first] + 1 ==
                     map[currPoint.second * mapWidth + currPoint.first]) {
                     currPoint = pathPoint;
                     path->push_back(currPoint);
@@ -104,8 +105,7 @@ void WaveLib::WaveAlgorithm::buildPath(
     }
 }
 
-bool WaveLib::WaveAlgorithm::checkPoint(const point& currPoint)
-{
+bool WaveLib::WaveAlgorithm::checkPoint(const point& currPoint) {
     if (currPoint.first < 0 || currPoint.first > mapWidth - 1 ||
         currPoint.second < 0 || currPoint.second > mapHeight - 1 ||
         map[currPoint.second * mapWidth + currPoint.first] == WALL) {
