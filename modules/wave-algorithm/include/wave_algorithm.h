@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <queue>
+#include <utility>
 #include <stdexcept>
 
 namespace WaveLib{
@@ -22,20 +23,18 @@ class WaveAlgorithm {
     WaveAlgorithm(int _mapHeight, int _mapWidth, const std::vector<int>& _map);
 
     bool findPath(
-        const point& start, 
-        const point& finish, 
-        std::vector<point>* path
-        );
+        const point& start,
+        const point& finish,
+        std::vector<point>* path);
 
  private:
     bool waveProp(const point& start, const point& finish);
     void buildPath(
-        const point& start, 
-        const point& finish, 
-        std::vector<point>* path
-        );
+        const point& start,
+        const point& finish,
+        std::vector<point>* path);
     bool checkPoint(const point& currPoint);
 };
-};
+};  // namespace WaveLib
 
-#endif // MODULES_WAVE_ALGORITHM_INCLUDE_WAVE_ALGORITHM_H_
+#endif  // MODULES_WAVE_ALGORITHM_INCLUDE_WAVE_ALGORITHM_H_
