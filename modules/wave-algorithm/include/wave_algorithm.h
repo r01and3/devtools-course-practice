@@ -9,6 +9,7 @@
 #include <vector>
 #include <queue>
 #include <utility>
+#include <algorithm>
 #include <stdexcept>
 
 namespace WaveLib{

@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <queue>
+#include <algorithm>
 
 #include "include/wave_algorithm.h"
 
