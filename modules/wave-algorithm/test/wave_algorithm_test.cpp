@@ -40,9 +40,9 @@ TEST(WaveAlgorithm, Start_PointOutOfMapExc) {
         WALL, FREE
     };
     WaveLib::WaveAlgorithm algorithm(2, 2, map);
-    WaveLib::point start(-1, -1);
-    WaveLib::point finish(0, 0);
-    std::vector<WaveLib::point> path;
+    WaveLib::Point start(-1, -1);
+    WaveLib::Point finish(0, 0);
+    std::vector<WaveLib::Point> path;
     ASSERT_ANY_THROW(algorithm.findPath(start, finish, &path));
 }
 
@@ -52,9 +52,9 @@ TEST(WaveAlgorithm, Finish_PointOutOfMapExc) {
         WALL, FREE
     };
     WaveLib::WaveAlgorithm algorithm(2, 2, map);
-    WaveLib::point start(0, 0);
-    WaveLib::point finish(4, 4);
-    std::vector<WaveLib::point> path;
+    WaveLib::Point start(0, 0);
+    WaveLib::Point finish(4, 4);
+    std::vector<WaveLib::Point> path;
     ASSERT_ANY_THROW(algorithm.findPath(start, finish, &path));
 }
 
@@ -64,9 +64,9 @@ TEST(WaveAlgorithm, Both_PointOutOfMapExc) {
         WALL, FREE
     };
     WaveLib::WaveAlgorithm algorithm(2, 2, map);
-    WaveLib::point start(-1, 1);
-    WaveLib::point finish(4, 4);
-    std::vector<WaveLib::point> path;
+    WaveLib::Point start(-1, 1);
+    WaveLib::Point finish(4, 4);
+    std::vector<WaveLib::Point> path;
     ASSERT_ANY_THROW(algorithm.findPath(start, finish, &path));
 }
 
@@ -76,9 +76,9 @@ TEST(WaveAlgorithm, Start_PointOnWall) {
         WALL, FREE
     };
     WaveLib::WaveAlgorithm algorithm(2, 2, map);
-    WaveLib::point start(0, 1);
-    WaveLib::point finish(0, 0);
-    std::vector<WaveLib::point> path;
+    WaveLib::Point start(0, 1);
+    WaveLib::Point finish(0, 0);
+    std::vector<WaveLib::Point> path;
     ASSERT_ANY_THROW(algorithm.findPath(start, finish, &path));
 }
 
@@ -88,9 +88,9 @@ TEST(WaveAlgorithm, Finish_PointOnWall) {
         WALL, FREE
     };
     WaveLib::WaveAlgorithm algorithm(2, 2, map);
-    WaveLib::point start(0, 0);
-    WaveLib::point finish(1, 0);
-    std::vector<WaveLib::point> path;
+    WaveLib::Point start(0, 0);
+    WaveLib::Point finish(1, 0);
+    std::vector<WaveLib::Point> path;
     ASSERT_ANY_THROW(algorithm.findPath(start, finish, &path));
 }
 
@@ -100,9 +100,9 @@ TEST(WaveAlgorithm, Both_PointOnWall) {
         WALL, FREE
     };
     WaveLib::WaveAlgorithm algorithm(2, 2, map);
-    WaveLib::point start(0, 1);
-    WaveLib::point finish(1, 0);
-    std::vector<WaveLib::point> path;
+    WaveLib::Point start(0, 1);
+    WaveLib::Point finish(1, 0);
+    std::vector<WaveLib::Point> path;
     ASSERT_ANY_THROW(algorithm.findPath(start, finish, &path));
 }
 
@@ -113,13 +113,13 @@ TEST(WaveAlgorithm, PathNotFound) {
         WALL, FREE, FREE
     };
     WaveLib::WaveAlgorithm algorithm(3, 3, map);
-    WaveLib::point start(0, 0);
-    WaveLib::point finish(2, 2);
-    std::vector<WaveLib::point> path;
-    std::vector<WaveLib::point> testPath = {
-        WaveLib::point(0, 0),
-        WaveLib::point(1, 1),
-        WaveLib::point(2, 0)
+    WaveLib::Point start(0, 0);
+    WaveLib::Point finish(2, 2);
+    std::vector<WaveLib::Point> path;
+    std::vector<WaveLib::Point> testPath = {
+        WaveLib::Point(0, 0),
+        WaveLib::Point(1, 1),
+        WaveLib::Point(2, 0)
     };
     ASSERT_FALSE(algorithm.findPath(start, finish, &path));
 }
@@ -133,17 +133,17 @@ TEST(WaveAlgorithm, SquareMap_PathFound) {
         WALL, WALL, FREE, FREE, WALL
     };
     WaveLib::WaveAlgorithm algorithm(5, 5, map);
-    WaveLib::point start(1, 0);
-    WaveLib::point finish(4, 2);
-    std::vector<WaveLib::point> path;
-    std::vector<WaveLib::point> testPath = {
-        WaveLib::point(1, 0),
-        WaveLib::point(0, 1),
-        WaveLib::point(1, 2),
-        WaveLib::point(2, 3),
-        WaveLib::point(3, 4),
-        WaveLib::point(4, 3),
-        WaveLib::point(4, 2)
+    WaveLib::Point start(1, 0);
+    WaveLib::Point finish(4, 2);
+    std::vector<WaveLib::Point> path;
+    std::vector<WaveLib::Point> testPath = {
+        WaveLib::Point(1, 0),
+        WaveLib::Point(0, 1),
+        WaveLib::Point(1, 2),
+        WaveLib::Point(2, 3),
+        WaveLib::Point(3, 4),
+        WaveLib::Point(4, 3),
+        WaveLib::Point(4, 2)
     };
     algorithm.findPath(start, finish, &path);
     ASSERT_EQ(testPath, path);
@@ -157,16 +157,16 @@ TEST(WaveAlgorithm, RectangularMap_PathFound) {
         FREE, FREE, WALL, WALL, FREE, WALL
     };
     WaveLib::WaveAlgorithm algorithm(4, 6, map);
-    WaveLib::point start(3, 0);
-    WaveLib::point finish(0, 3);
-    std::vector<WaveLib::point> path;
-    std::vector<WaveLib::point> testPath = {
-        WaveLib::point(3, 0),
-        WaveLib::point(4, 1),
-        WaveLib::point(3, 2),
-        WaveLib::point(2, 2),
-        WaveLib::point(1, 3),
-        WaveLib::point(0, 3)
+    WaveLib::Point start(3, 0);
+    WaveLib::Point finish(0, 3);
+    std::vector<WaveLib::Point> path;
+    std::vector<WaveLib::Point> testPath = {
+        WaveLib::Point(3, 0),
+        WaveLib::Point(4, 1),
+        WaveLib::Point(3, 2),
+        WaveLib::Point(2, 2),
+        WaveLib::Point(1, 3),
+        WaveLib::Point(0, 3)
     };
     algorithm.findPath(start, finish, &path);
     ASSERT_EQ(testPath, path);

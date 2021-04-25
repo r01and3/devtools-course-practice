@@ -1,8 +1,8 @@
 // Copyright 2021 Pronkin Dmitry
 
-#include <vector>
-#include <queue>
 #include <algorithm>
+#include <queue>
+#include <vector>
 
 #include "include/wave_algorithm.h"
 
@@ -35,9 +35,9 @@ WaveLib::WaveAlgorithm::WaveAlgorithm(
 }
 
 bool WaveLib::WaveAlgorithm::findPath(
-    const point& start,
-    const point& finish,
-    std::vector<point>* path
+    const Point& start,
+    const Point& finish,
+    std::vector<Point>* path
     ) {
     if (start.first < 0 || start.first > mapWidth - 1 ||
         start.second < 0 || start.second > mapHeight - 1 ||
@@ -58,15 +58,15 @@ bool WaveLib::WaveAlgorithm::findPath(
     return true;
 }
 
-bool WaveLib::WaveAlgorithm::waveProp(const point& start, const point& finish) {
-    std::queue<point> wavePointQueue({start});
+bool WaveLib::WaveAlgorithm::waveProp(const Point& start, const Point& finish) {
+    std::queue<Point> wavePointQueue({start});
     bool pathFound = false;
     while (!wavePointQueue.empty()) {
-        point currPoint = wavePointQueue.front();
+        Point currPoint = wavePointQueue.front();
         if (currPoint == finish) { pathFound = true; }
         for (int j = -1; j <= 1; j++) {
             for (int i = -1; i <= 1; i++) {
-                point wavePoint(currPoint.first + i, currPoint.second + j);
+                Point wavePoint(currPoint.first + i, currPoint.second + j);
                 if (currPoint != wavePoint &&
                     checkPoint(wavePoint) &&
                     map[wavePoint.second * mapWidth + wavePoint.first]
@@ -83,16 +83,16 @@ bool WaveLib::WaveAlgorithm::waveProp(const point& start, const point& finish) {
 }
 
 void WaveLib::WaveAlgorithm::buildPath(
-    const point& start,
-    const point& finish,
-    std::vector<point>* path
+    const Point& start,
+    const Point& finish,
+    std::vector<Point>* path
     ) {
-    point currPoint(finish);
+    Point currPoint(finish);
     path->push_back(currPoint);
     while (currPoint != start) {
         for (int j = -1; j <= 1; j++) {
             for (int i = -1; i <= 1; i++) {
-                point pathPoint(currPoint.first + i, currPoint.second + j);
+                Point pathPoint(currPoint.first + i, currPoint.second + j);
                 if (currPoint != pathPoint &&
                     checkPoint(pathPoint) &&
                     map[pathPoint.second * mapWidth + pathPoint.first] + 1 ==
@@ -106,7 +106,7 @@ void WaveLib::WaveAlgorithm::buildPath(
     }
 }
 
-bool WaveLib::WaveAlgorithm::checkPoint(const point& currPoint) {
+bool WaveLib::WaveAlgorithm::checkPoint(const Point& currPoint) {
     if (currPoint.first < 0 || currPoint.first > mapWidth - 1 ||
         currPoint.second < 0 || currPoint.second > mapHeight - 1 ||
         map[currPoint.second * mapWidth + currPoint.first] == WALL) {

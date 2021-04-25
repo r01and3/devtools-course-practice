@@ -3,17 +3,17 @@
 #ifndef MODULES_WAVE_ALGORITHM_INCLUDE_WAVE_ALGORITHM_H_
 #define MODULES_WAVE_ALGORITHM_INCLUDE_WAVE_ALGORITHM_H_
 
-#define WALL -2
-#define FREE -1
+constexpr int WALL = -2;
+constexpr int FREE = -1;
 
-#include <vector>
-#include <queue>
-#include <utility>
 #include <algorithm>
+#include <queue>
 #include <stdexcept>
+#include <utility>
+#include <vector>
 
-namespace WaveLib{
-using point = std::pair<int, int>;
+namespace WaveLib {
+using Point = std::pair<int, int>;
 class WaveAlgorithm {
  private:
     int mapHeight;
@@ -24,18 +24,18 @@ class WaveAlgorithm {
     WaveAlgorithm(int _mapHeight, int _mapWidth, const std::vector<int>& _map);
 
     bool findPath(
-        const point& start,
-        const point& finish,
-        std::vector<point>* path);
+        const Point& start,
+        const Point& finish,
+        std::vector<Point>* path);
 
  private:
-    bool waveProp(const point& start, const point& finish);
+    bool waveProp(const Point& start, const Point& finish);
     void buildPath(
-        const point& start,
-        const point& finish,
-        std::vector<point>* path);
-    bool checkPoint(const point& currPoint);
+        const Point& start,
+        const Point& finish,
+        std::vector<Point>* path);
+    bool checkPoint(const Point& currPoint);
 };
-};  // namespace WaveLib
+}  // namespace WaveLib
 
 #endif  // MODULES_WAVE_ALGORITHM_INCLUDE_WAVE_ALGORITHM_H_
