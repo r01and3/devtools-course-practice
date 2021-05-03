@@ -116,11 +116,6 @@ TEST(WaveAlgorithm, PathNotFound) {
     WaveLib::Point start(0, 0);
     WaveLib::Point finish(2, 2);
     std::vector<WaveLib::Point> path;
-    std::vector<WaveLib::Point> testPath = {
-        WaveLib::Point(0, 0),
-        WaveLib::Point(1, 1),
-        WaveLib::Point(2, 0)
-    };
     ASSERT_FALSE(algorithm.findPath(start, finish, &path));
 }
 
