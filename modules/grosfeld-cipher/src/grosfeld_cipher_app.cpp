@@ -1,4 +1,4 @@
-
+// Copyright 2021 Pronkin Dmitry
 
 #include "include/grosfeld_cipher_app.h"
 
@@ -12,18 +12,21 @@
 GronsfeldCipherApp::GronsfeldCipherApp() : message_("") {}
 
 void GronsfeldCipherApp::help(const char* appname, const char* message) {
-    message_ = 
-        std::string(message) + 
+    message_ =
+        std::string(message) +
           "This is a Gronsfeld cipher application.\n\n" +
           "Please provide arguments in the following format:\n\n" +
 
           " $" + appname + " <sourceString> <key> <operation>\n\n" +
 
-          "Where <sourceString> - string to decrypt or encrypt, " + 
+          "Where <sourceString> - string to decrypt or encrypt, " +
           "<key> - cipher key, <operation> is one of 'decrypt' or 'encrypt'\n";
 }
 
-bool GronsfeldCipherApp::validateNumberOfArguments(int argc, const char** argv) {
+bool GronsfeldCipherApp::validateNumberOfArguments(
+    int argc,
+    const char** argv
+    ) {
     if (argc == 1) {
         help(argv[0]);
         return false;
