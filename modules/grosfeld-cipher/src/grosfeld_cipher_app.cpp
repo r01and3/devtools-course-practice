@@ -79,7 +79,7 @@ std::string GronsfeldCipherApp::operator()(int argc, const char** argv) {
         args.key = parseKey(argv[2]);
         args.operation = parseOperation(argv[3]);
     }
-    catch(std::string str) {
+    catch(std::string& str) {
         return str;
     }
 

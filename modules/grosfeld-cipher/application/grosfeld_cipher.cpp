@@ -1,3 +1,4 @@
+// Copyright 2021 Pronkin Dmitry
 
 #include <stdlib.h>
 #include <stdio.h>
