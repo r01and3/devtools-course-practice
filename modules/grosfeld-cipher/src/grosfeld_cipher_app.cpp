@@ -89,12 +89,11 @@ std::string GronsfeldCipherApp::operator()(int argc, const char** argv) {
     GronsfeldCipher cipherObj(args.sourceString, args.key);
 
     std::ostringstream stream;
-    switch (args.operation)
-    {
-    case 'd':
+    switch (args.operation) {
+     case 'd':
         stream << cipherObj.decode(args.sourceString, args.key);
         break;
-    case 'e':
+     case 'e':
         stream << cipherObj.getCipher();
         break;
     }
