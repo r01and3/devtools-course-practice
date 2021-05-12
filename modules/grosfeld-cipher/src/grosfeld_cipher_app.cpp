@@ -5,9 +5,9 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdexcept>
 #include <sstream>
-#include <string.h>
 #include <string>
 
 GronsfeldCipherApp::GronsfeldCipherApp() : message_("") {}
@@ -39,7 +39,7 @@ bool GronsfeldCipherApp::validateNumberOfArguments(
 std::string parseSourceString(const char* arg) {
     std::string sourceString(arg);
 
-    if (sourceString.find_first_not_of("abcdefghijklmnopqrstuvwxyz") 
+    if (sourceString.find_first_not_of("abcdefghijklmnopqrstuvwxyz")
         != std::string::npos) {
         throw std::runtime_error("Wrong string format!");
     }
