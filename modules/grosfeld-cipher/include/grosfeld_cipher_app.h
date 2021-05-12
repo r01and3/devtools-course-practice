@@ -16,11 +16,11 @@ class GronsfeldCipherApp {
     void help(const char* appname, const char* message = "");
     bool validateNumberOfArguments(int argc, const char** argv);
     std::string message_;
-    typedef struct {
+    struct Arguments {
         std::string sourceString;
         int key;
         char operation;
-    } Arguments;
+    };
 };
 
 #endif  // MODULES_GROSFELD_CIPHER_INCLUDE_GROSFELD_CIPHER_APP_H_

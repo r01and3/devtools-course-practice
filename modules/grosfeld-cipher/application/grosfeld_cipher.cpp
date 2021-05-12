@@ -1,7 +1,7 @@
 // Copyright 2021 Pronkin Dmitry
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string>
 #include "include/grosfeld_cipher_app.h"
 

@@ -2,24 +2,23 @@
 
 #include "include/grosfeld_cipher_app.h"
 
+#include <stdexcept>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
+#include <sstream>
 #include <string.h>
 #include <string>
-#include <sstream>
 
 GronsfeldCipherApp::GronsfeldCipherApp() : message_("") {}
 
 void GronsfeldCipherApp::help(const char* appname, const char* message) {
     message_ =
         std::string(message) +
-          "This is a Gronsfeld cipher application.\n\n" +
-          "Please provide arguments in the following format:\n\n" +
-
-          " $" + appname + " <sourceString> <key> <operation>\n\n" +
-
-          "Where <sourceString> - string to decrypt or encrypt, " +
+          "This is a Gronsfeld cipher application.\n\n" \
+          "Please provide arguments in the following format:\n\n" \
+          " $" + appname + " <sourceString> <key> <operation>\n\n" \
+          "Where <sourceString> - string to decrypt or encrypt, " \
           "<key> - cipher key, <operation> is one of 'decrypt' or 'encrypt'\n";
 }
 
@@ -40,8 +39,9 @@ bool GronsfeldCipherApp::validateNumberOfArguments(
 std::string parseSourceString(const char* arg) {
     std::string sourceString(arg);
 
-    if (sourceString.find_first_of("1234567890") != std::string::npos) {
-        throw std::string("Wrong string format!");
+    if (sourceString.find_first_not_of("abcdefghijklmnopqrstuvwxyz") 
+        != std::string::npos) {
+        throw std::runtime_error("Wrong string format!");
     }
 
     return sourceString;
@@ -52,7 +52,7 @@ int parseKey(const char* arg) {
     int key = strtol(arg, &end, 10);
 
     if (end[0]) {
-        throw std::string("Wrong number format!");
+        throw std::runtime_error("Wrong number format!");
     }
 
     return key;
@@ -65,7 +65,7 @@ char parseOperation(const char* arg) {
     } else if (!strcmp(arg, "encrypt")) {
         op = 'e';
     } else {
-        throw std::string("Wrong operation format!");
+        throw std::runtime_error("Wrong operation format!");
     }
     return op;
 }
@@ -82,8 +82,8 @@ std::string GronsfeldCipherApp::operator()(int argc, const char** argv) {
         args.key = parseKey(argv[2]);
         args.operation = parseOperation(argv[3]);
     }
-    catch(std::string& str) {
-        return str;
+    catch(std::runtime_error& e) {
+        return std::string(e.what());
     }
 
     GronsfeldCipher cipherObj(args.sourceString, args.key);
